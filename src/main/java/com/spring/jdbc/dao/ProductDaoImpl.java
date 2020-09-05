@@ -17,8 +17,13 @@ public class ProductDaoImpl implements ProductDao {
 	}
 
 	public String insert(Product product) {
-		// TODO Auto-generated method stub
-		return null;
+		String query = "insert into product(name,price) values(?,?)";
+		int insert = this.jdbcTemplate.update(query ,product.getName(),product.getPrice());
+		if(insert>0)
+			return insert+" Rows inserted";
+		else
+			return insert+" Rows inserted";
+		
 	}
 	
 
