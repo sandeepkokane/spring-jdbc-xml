@@ -63,16 +63,14 @@ public class App {
 				System.out.println("Enter the Product Id to view:");
 				int id = sc.nextInt();
 				Product product = productDao.getProduct(id);
-					System.out.println(product);
+				System.out.println(product);
 			}
 				break;
-				
-			case 5:
-			{
+
+			case 5: {
 				System.out.println("**** VIEW OPERATION (ALL PRODUCTS) ****");
 				List<Product> list = productDao.getAllProduct();
-				for(Product p : list)
-				{
+				for (Product p : list) {
 					System.out.println(p);
 				}
 			}
