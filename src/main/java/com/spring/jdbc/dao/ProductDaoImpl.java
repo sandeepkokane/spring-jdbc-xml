@@ -1,6 +1,10 @@
 package com.spring.jdbc.dao;
 
+import java.util.List;
+
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.ResultSetExtractor;
+import org.springframework.jdbc.core.RowMapper;
 
 import com.spring.jdbc.model.Product;
 
@@ -42,6 +46,21 @@ public class ProductDaoImpl implements ProductDao {
 			return delete + " Rows deleted";
 		else
 			return delete + " Rows deleted";
+	}
+
+	public Product getProduct(int id) {
+		String query = "select * from product where id = ?";
+		RowMapper<Product> rowMapper = new RowMapperImpl();
+		Product product = this.jdbcTemplate.queryForObject(query, rowMapper, id);
+
+		return product;
+
+	}
+
+	public List<Product> getAllProduct() {
+		String query = "select * from product";
+		List<Product> list = this.jdbcTemplate.query(query, new RowMapperImpl());
+		return list;
 	}
 
 }

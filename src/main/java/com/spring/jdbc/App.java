@@ -1,5 +1,6 @@
 package com.spring.jdbc;
 
+import java.util.List;
 import java.util.Scanner;
 
 import org.springframework.context.ApplicationContext;
@@ -19,7 +20,7 @@ public class App {
 		while (flag) {
 			System.out.println("Spring JDBC Project -> Performing CRUD Operations");
 			System.out.println("Select Operation:");
-			System.out.println("1. Insert\t2.Update\t3.Delete\t4.View\t5.Exit");
+			System.out.println("1. Insert\t2.Update\t3.Delete\t4.View (Single) \t5.View (All)\t6.Exit");
 			int choice = sc.nextInt();
 			switch (choice) {
 			case 1: {
@@ -57,7 +58,27 @@ public class App {
 			}
 				break;
 
+			case 4: {
+				System.out.println("**** VIEW OPERATION (SINGLE PRODUCT) ****");
+				System.out.println("Enter the Product Id to view:");
+				int id = sc.nextInt();
+				Product product = productDao.getProduct(id);
+					System.out.println(product);
+			}
+				break;
+				
 			case 5:
+			{
+				System.out.println("**** VIEW OPERATION (ALL PRODUCTS) ****");
+				List<Product> list = productDao.getAllProduct();
+				for(Product p : list)
+				{
+					System.out.println(p);
+				}
+			}
+				break;
+
+			case 6:
 				flag = false;
 				System.out.println("Thank You...");
 				break;
