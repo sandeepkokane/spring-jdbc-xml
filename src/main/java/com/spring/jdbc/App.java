@@ -19,19 +19,41 @@ public class App {
 		while (flag) {
 			System.out.println("Spring JDBC Project -> Performing CRUD Operations");
 			System.out.println("Select Operation:");
-			System.out.println("1. Insert\t2.Update\t3.Delete\t4.View\5.Exit");
+			System.out.println("1. Insert\t2.Update\t3.Delete\t4.View\t5.Exit");
 			int choice = sc.nextInt();
 			switch (choice) {
 			case 1: {
+				System.out.println("**** INSERT OPERATION ****");
 				System.out.println("Enter the Product Name:");
-
 				String name = sc.next();
 				System.out.println("Enter the Product Price:");
 				int price = sc.nextInt();
-
 				Product product = new Product(name, price);
 				String insert = productDao.insert(product);
 				System.out.println(insert);
+			}
+				break;
+
+			case 2: {
+				System.out.println("**** UPDATE OPERATION ****");
+				System.out.println("Enter the Product Name:");
+				String name = sc.next();
+				System.out.println("Enter the Product Price:");
+				int price = sc.nextInt();
+				System.out.println("Enter the Product Id:");
+				int id = sc.nextInt();
+				String update = productDao.update(new Product(id, name, price));
+				System.out.println(update);
+
+			}
+				break;
+
+			case 3: {
+				System.out.println("**** DELETE OPERATION ****");
+				System.out.println("Enter the Product Id:");
+				int id = sc.nextInt();
+				String delete = productDao.delete(id);
+				System.out.println(delete);
 			}
 				break;
 
